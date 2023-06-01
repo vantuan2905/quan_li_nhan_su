@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="nhanvien.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <header class="header">
+        <h1>Ứng dụng quản lí nhân sự <span><a th:href="@{/doiMatKhau(manv=${nhanvien.manv})}"><button >ĐỔI MẬT KHẨU</button></a></span>	<span><button onclick="openPopup()">Log Out</button></span> </h1>
+   		
+    </header>
+    <div class="section-one">
+        <div class="container">
+            <h1>Thông tin cá nhân</h1>
+            <div class="popup" id="popup">
+            	<img alt="" src="/image/404-tick.png">
+            	<p>dang xuat thanh cong</p>
+            	<a th:href="@{/logout}"><button onclick="closePopup()">OK</button></a>
+            </div>
+            <div class="box">
+                <div class="row">
+                    <div class="col-3 box-left">
+                        <img src="image/peoplebtl.jpg" alt="">
+                    </div>
+                    <div class="col-9">
+                        <div class="inner-right">
+                            <ul>
+                                <li>Mã nhân viên</li>
+                                <li><span th:text="${nhanvien.manv}"></span></li>
+                            </ul>
+                            <ul>
+                                <li>Họ và tên</li>
+                                <li><span th:text="${nhanvien.tennv}"></span></li>
+                            </ul>
+                            <ul>
+                                <li>Địa chỉ</li>
+                                <li><span th:text="${nhanvien.dc}"></span></li>
+                            </ul>
+                            <ul>
+                                <li>Số điện thoại</li>
+                                <li><span th:text="${nhanvien.sdt}"></span></li>
+                            </ul>
+                            <ul>
+                                <li>Chức vụ</li>
+                                <li><span th:text="${nhanvien.chucvu}"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="section-1" style="margin-top:20px;">
+    		
+	    	<div><a  th:href="@{/XemChamCong(manv=${nhanvien.manv})}"><button  class="add" type="submit">Xem Chấm Công</button></a></div> 
+	   </div>
+    <!-- sua thong tin -->
+    <div class="section-1" style="margin-top:20px;">
+        <div><button id="edit_nv" class="add" type="submit">sửa thông tin</button></div>  
+        <form th:action="@{/capnhap(manv=${nhanvien.manv})}"  method="post" class="form" id="form">
+            <i class="fa-solid fa-rectangle-xmark" id="close"></i>
+            <div class="container">    
+                </br>
+                <label for="tennv"><b>Tên nhân viên</b></label>
+                </br>
+                <input type="text" placeholder="Nhập tên nhân viên " name="tennv" required >
+                </br>
+                <label for="dc"><b>Địa chỉ</b></label>
+                </br>
+                <input type="text" placeholder="Nhập địa chỉ" name="dc" required>
+                </br>
+                <label for="sdt"><b>Số điện thoại</b></label>
+                </br>
+                <input type="text" placeholder="Nhập số điện thoại " name="sdt" required>
+                </br>
+                <input type="hidden" name="chucvu" th:value="${nhanvien.chucvu}">
+                <div class="btn">
+                    <button type="submit" class="edit-nv">sửa thông tin</button>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+   <!--  --> 
+    
+    <script >
+    //sua
+					var add = document.querySelector("#edit_nv");
+					var close = document.querySelector("#close");
+					var form = document.querySelector("#form");
+					add.onclick = function() {
+						form.classList.add("show");
+					}
+					close.onclick = function() {
+						form.classList.remove("show");
+					}
+
+					
+					//
+					var popup = document.getElementById("popup");
+					function openPopup() {
+						popup.classList.add("openPopup");
+					}
+					function closePopup() {
+						popup.classList.remove("openPopup");
+					}
+				</script>
+</body>
+</html>

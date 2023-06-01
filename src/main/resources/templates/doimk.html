@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <title>Đăng ký</title>
+</head>
+<body>
+    <form th:action="@{/XuLiDoiMatKhau(manv=${nhanvien.manv})}" method="post"  >
+        <div class="container">
+            <h1>Form Thay đổi mật khẩu</h1>
+           
+             <label for="psw"><b>Mật Khẩu cũ <span th:text="${message_wrongpass}" style="color:red">abc</span></b> </label>
+             
+            </br>
+            <input type="password" placeholder="Nhập mật khẩu cũ" name="password" required>
+            </br>
+            <label for="password_new"><b>Mật Khẩu Mới</b> </label>
+            </br> 
+           <input type="password" placeholder="Mật khẩu mới" name="password_new" required>
+            </br>
+            <label for="password_new_2"><b>Nhập Lại Mật Khẩu Mới</b><span th:text="${message_differentpass}" style="color:red"></span></label>
+            </br>
+            <input type="password" placeholder="Nhập lại mật khẩu" name="password_new2" required>
+            </br>
+            <p></p>
+            <div class="clearfix">
+                <button type="submit" class="signupbtn">Thay đổi</button>
+            </div>
+            
+        </div>
+    </form>
+    
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+ * {box-sizing: border-box}
+ body{
+   font-family: 'Noto Sans JP', sans-serif;
+   background-color:#F2F2F2;
+   align-items: center;
+   justify-content: center;
+ }
+ h1, label{
+   color: DodgerBlue;
+ }
+ label{
+    margin-left: 0;
+   
+ }
+ .container{
+  border-radius: 20px;
+  box-shadow: 4px 4px 10px 10px rgba(0,0,0,0.2);;
+ }
+
+   input[type=text], input[type=password] {
+   width: 100%;
+   padding: 15px;
+   margin: 5px 0 22px 0;
+   display: inline-block;
+   border: none;
+   width:100%;
+   resize: vertical;
+   padding:15px;
+   border-radius:15px;
+   border:0;
+   box-shadow:4px 4px 10px rgba(0,0,0,0.2);
+ }
+input[type=text]:focus, input[type=password]:focus {
+   outline: none;
+ }
+
+button {
+   background-color: #4CAF50;
+   color: white;
+   padding: 14px 20px;
+   margin: 8px 0;
+   border: none;
+   cursor: pointer;
+   width: 100%;
+   opacity: 1;
+ }
+button:hover {
+   opacity:1;
+ }
+.cancelbtn {
+   padding: 14px 20px;
+   background-color: #f44336;
+ }
+.signupbtn {
+   float: left;
+   width: 50%;
+   border-radius:15px;
+   border:0;
+   margin-left: 25%;
+   box-shadow:4px 4px 10px rgba(0,0,0,0.2);
+ }
+.container {
+   padding: 16px;
+ }
+.clearfix::after {
+   content: "";
+   clear: both;
+   display: table;
+ }
+ .container{
+    margin-left: 30%;
+    margin-top: 30px;
+    position: relative;
+    width: 40%;
+    height: auto;
+    background-color: #ffffff;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.2);
+    
+    
+ }
+</style>
+</html>

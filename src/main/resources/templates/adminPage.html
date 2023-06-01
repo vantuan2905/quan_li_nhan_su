@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="quanli.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <header class="header">
+         <h1>Ứng dụng quản lí nhân sự	<span><button onclick="openPopup()">Log Out</button></span> </h1>
+        <div class="popup" id="popup">
+            	<img alt="" src="/image/404-tick.png">
+            	<p>dang xuat thanh cong</p>
+            	<a th:href="@{/logout}"><button onclick="closePopup()">OK</button></a>
+            </div>
+    </header>
+   <!-- Phan cua truong -->
+	     <div class="section-1" style="margin-top: 100px;">
+	    	<div><button id="loc_nv" class="add" type="submit">Loc nhân viên</button></div> 
+	    	<form th:action="@{/search_nv}"  method="get" class="form" id="formLoc">
+	            <i class="fa-solid fa-rectangle-xmark" id="closeLoc"></i>
+	            <div class="container">   
+	                </br>
+	                <input type="text" placeholder="Nhập thông tin nhân viên" name="manv" required >
+	                </br>
+	                <span>Lọc theo:</span>
+	                <select name="kieuloc">
+	                	<option value="manv"> Mã nhân viên
+	                	<option value="tennv"> Tên nhân viên
+	                	<option value="chucvu"> Chức vụ
+	                </select>
+	                <div class="btn" style="margin-top:10px">
+	                    <button type="submit" class="add-nv">Lọc</button>
+	                </div>
+	            </div>
+	            
+	        </form>
+	    </div>
+    <!-- -- -->
+    <div class="section-1" style="margin-top:20px;">
+	    	<div><a  th:href="@{/ChamCong}"><button  class="add" type="submit">Chấm Công</button></a></div> 
+	   </div>
+	   <div class="section-1" style="margin-top:20px;">
+	    	<div><a th:href="@{/TinhLuong}"><button  class="add" type="submit">Tính Lương</button></a></div> 
+	   </div>
+    <div class="section-1" style="margin-top:20px;">
+        <div><button id="add_nv" class="add" type="submit">Thêm nhân viên</button></div>  
+        <form th:action="@{/themNhanvien}"  method="post" class="form" id="form">
+            <i class="fa-solid fa-rectangle-xmark" id="close"></i>
+            <div class="container">   
+                </br>
+                <label for="manv"><b>Mã nhân viên</b></label>
+                <input type="text" placeholder="Nhập mã nhân viên " name="manv" required >
+                </br>
+                <label for="tennv"><b>Tên nhân viên</b></label>
+                </br>
+                <input type="text" placeholder="Nhập tên nhân viên " name="tennv" required >
+                </br>
+                <label for="dc"><b>Địa chỉ</b></label>
+                </br>
+                <input type="text" placeholder="Nhập địa chỉ" name="dc" required>
+                </br>
+                <label for="sdt"><b>Số điện thoại</b></label>
+                </br>
+                <input type="text" placeholder="Nhập số điện thoại " name="sdt" required>
+                </br>
+                <select name="chucvu">
+                	<div th:each="i:${CV}">
+                		<option  th:value="${i}"><SPAN th:text="${i}"></SPAN>
+                	</div>
+                </select>
+                <div class="btn">
+                    <button type="submit" class="add-nv">Thêm nhân viên</button>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+    
+    <div class="section-one">
+        <div class="container" id="container">  
+            <table>
+                
+                    <tr class="title">
+                        <td >Mã nhân viên</td>
+                        <td>Tên nhân viên</td>
+                        <td>Địa chỉ</td>
+                        <td>Số điện thoại</td>
+                        <td>Chức vụ</td>
+                     
+                        <td></td>
+                    </tr>
+                    <div th:each="i:${ds_nhanvien}">
+	                	<tr class="desc">
+	                        <td><span th:text="${i.manv}"></span></td>
+	                        <td><span th:text="${i.tennv}"></span></td>
+	                        <td><span th:text="${i.dc}"></span></td>
+	                        <td><span th:text="${i.sdt}"></span></td>
+	                        <td><span th:text="${i.chucvu}"></span></td>
+	                        
+	                      	<td> <a th:href="@{/XacNhanXoaNhanvien(manv=${i.manv})}"><button class="delete">Xoa</button></a></td>
+	                    </tr>
+	
+                	</div>                    
+            </table>
+            
+        </div>
+    </div>
+    <script>
+    	var add=document.querySelector("#add_nv");
+        var close=document.querySelector("#close");
+        var form=document.querySelector("#form");
+        add.onclick = function(){
+            form.classList.add("show");
+        }
+        close.onclick = function(){
+            form.classList.remove("show");
+        }
+        var popup=document.getElementById("popup");
+    	function openPopup(){
+    		popup.classList.add("openPopup");
+    	}
+    	function closePopup(){
+    		popup.classList.remove("openPopup");
+    	}
+    	var addLoc=document.querySelector("#loc_nv");
+        var closeLoc=document.querySelector("#closeLoc");
+        var formLoc=document.querySelector("#formLoc");
+        addLoc.onclick = function(){
+            formLoc.classList.add("show");
+        }
+        closeLoc.onclick = function(){
+            formLoc.classList.remove("show");
+        }
+    </script>
+
+</body>
+</html>

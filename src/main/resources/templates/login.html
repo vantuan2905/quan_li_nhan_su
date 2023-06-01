@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Spring Boot Security Hello</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body background="image/login1.jpeg">
+		<div class="box">
+			<p class="logout" style="color:green"><span th:text="${message_logout}"></span></p>
+			<h2>DANG NHAP </h2>
+			<form th:action="@{/authen}" method="post">
+				<table>
+					<tr>
+						<td>Username:</td>
+						<td><input type='text' name='username' value=''></td>
+					</tr>
+					<tr>
+						<td>Password:</td>
+						<td><input type='password' name='password' /></td>
+					</tr>
+					<tr>
+						<td><input type="radio" name="role" VALUE="admin" checked>Vai tro admin </td>
+						<td><input type="radio" name="role" value="nhanvien" >Vai tro nhan vien</td>
+					</tr>
+					<span th:text="${message}" class="error"></span>
+				</table>
+				<td><input name="submit" type="submit" value="Dang Nhap" /></td>
+			</form>
+		</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="quanli.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+	<form th:action="@{/errors2}">
+	<input type="hidden" name="manv" th:value="${nhanvien.manv}">
+		<p>Bảng chấm công tháng lương tháng <span th:text="${thag}"></span></p>
+		<table border="1" cellpadding=5 style="margin-top:30px">
+				<tr>
+					<th>Ngày</th>
+					<th>Trạng thái</th>
+					
+				</tr>
+				<div th:each="i:${ds}">
+					<tr>
+						<td ><span th:text="${i.ngay}"></span></td>
+						<td th:text="${i.trangthai}"></td>
+					</tr>
+				</div>
+			</table>
+			<input type="submit" value="Quay Lai" style="margin-top: 20px;margin-left:100px">
+	</form>
+</body>
+</html>

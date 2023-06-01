@@ -1,0 +1,167 @@
+.header{
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQslybRdTHg0XhN1-1CL42bdeQ5IE9UI89VQQ&usqp=CAU);
+    height: 100px;
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+.popup{
+	width:400px;
+	background: #fff;
+	border-radius: 6px;
+	position: absolute;
+	top:0;
+	left:50%;
+	transform:translate(-50%,-50%) scale(0.1);
+	text-align: center;
+	padding:0px 30px 30px;
+	color:#333;
+	z-index: 20;
+	background-color:#52b652; 
+	visibility: hidden;
+	transition:1s;
+}
+.openPopup{
+	top:50%;
+	left:50%;
+	visibility:visible;
+	transform:scale(1);
+}
+.popup img{
+	margin-top:-10%;
+	width:100px;
+	
+}
+.popup button{
+	width:100%;
+	background-color:gray; 
+}
+.header h1{
+    color:white;
+    font-size: 36px;
+    font-family: 'Roboto';
+   
+}
+.header h1 span{
+	float: right;
+	margin-right:20px;
+	
+}
+.header h1 span a{
+	color:white;
+	text-decoration: none;
+	
+}
+.header h1 span a:hover{
+	color:red;
+	
+}
+.header p{
+	float:right;
+}
+
+.section-one{
+    margin-top: 200px;
+    text-align: center;
+}
+
+.section-one h1{
+    font-size: 36px;
+    font-weight: 700;
+    color: rgb(61, 61, 136);
+    margin-bottom: 30px;
+}
+.section-one .box .box-left img{
+  
+    height: 200px;
+    width: auto;
+}
+
+.section-one .box .inner-right{
+    background-color: rgb(255, 255, 255);
+    box-shadow:  0px 0px 15px rgb(0 0 0 / 10%);
+    padding:30px;
+}
+
+.section-one .box ul{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    border-bottom: 2px solid rgb(249, 249, 244);
+    margin-left: -30px;
+    margin-right: -30px;
+    padding-right: 30px;
+}
+
+.section-one .box ul li{
+    list-style: none;
+    color: rgb(57, 57, 134);
+    font-size: 20px;
+    font-weight: 500;
+}
+.section-1{
+    margin-top: 200px;
+}
+
+.section-1  form{
+    background-color: #dfe3ec;
+    width: 300px;
+    margin-top: 50px;
+    padding: 0 30px 20px 30px;
+    border-radius: 3px;
+    margin-left: 400px;
+}
+.section-1 .form{
+    display: none;
+}
+.section-1 .show{
+    display: block;
+}
+
+.section-1  i{
+    margin-top: 20px;
+    color: red;
+    margin-left: 280px;
+
+}
+.section-1 i:hover{
+    cursor: pointer;
+}
+.section-1 .container input{
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    margin-right: 20px;
+    height: 20px;
+}
+.section-1 .container label{
+    margin-bottom: 10px;
+}
+.section-1  .add{
+    background-color: rgb(33, 203, 90);
+    padding: 5px;
+    border: 2px solid rgb(33, 203, 90);
+    border-radius: 3px;
+    font-size: 22px;
+    margin-left:80px;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: 500;
+}
+
+.section-1 .add:hover{
+    cursor: pointer;
+}
+
+.section-1 .container  .add-nv{
+    background-color: rgb(33, 203, 90);
+    border: 2px solid rgb(33, 203, 90);
+    padding: 3px 10px;
+    font-size: 20px;
+    color: white;
+    border-radius: 2px;
+    margin-left: 60px;
+}

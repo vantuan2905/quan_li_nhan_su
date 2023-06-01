@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="quanli.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <header class="header">
+         <h1>Ứng dụng quản lí nhân sự	<span><button onclick="openPopup()">Log Out</button></span> </h1>
+        <div class="popup" id="popup">
+            	<img alt="" src="/image/404-tick.png">
+            	<p>dang xuat thanh cong</p>
+            	<a th:href="@{/logout}"><button onclick="closePopup()">OK</button></a>
+            </div>
+    </header>
+
+    <div class="section-one" style="margin-top: 100px">
+        <div class="container" id="container">  
+            <table>
+                
+                    <tr class="title">
+                        <td >Mã nhân viên</td>
+                        <td>Tên nhân viên</td>
+                        <td>Địa chỉ</td>
+                        <td>Số điện thoại</td>
+                        <td>Chức vụ</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                   <div th:each="nv:${dsnhanvien}">
+	                	<tr class="desc">
+	                        <td><span th:text="${nv.manv}"></span></td>
+	                        <td><span th:text="${nv.tennv}"></span></td>
+	                        <td><span th:text="${nv.dc}"></span></td>
+	                        <td><span th:text="${nv.sdt}"></span></td>
+	                        <td><span th:text="${nv.chucvu}"></span></td>
+	                        <td><a th:href="@{/suaNhanvien}" style="text-decoration: none"><button class="edit">Sửa</button></a></td>
+	                      	<td><a th:href="@{/XacNhanXoaNhanvien(manv=${nv.manv})}"><button class="delete">Xoa</button></a></td>
+	                    </tr>
+	
+                	</div>                    
+            </table>
+            
+        </div>
+    </div>
+    <script>
+    	var add=document.querySelector("#add_nv");
+        var close=document.querySelector("#close");
+        var form=document.querySelector("#form");
+        add.onclick = function(){
+            form.classList.add("show");
+        }
+        close.onclick = function(){
+            form.classList.remove("show");
+        }
+        var popup=document.getElementById("popup");
+    	function openPopup(){
+    		popup.classList.add("openPopup");
+    	}
+    	function closePopup(){
+    		popup.classList.remove("openPopup");
+    	}
+    	var addLoc=document.querySelector("#loc_nv");
+        var closeLoc=document.querySelector("#closeLoc");
+        var formLoc=document.querySelector("#formLoc");
+        addLoc.onclick = function(){
+            formLoc.classList.add("show");
+        }
+        closeLoc.onclick = function(){
+            formLoc.classList.remove("show");
+        }
+    </script>
+
+</body>
+</html>
